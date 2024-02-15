@@ -13,7 +13,9 @@ class ExchangeRate extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = ['date'];
+    protected $casts = [
+        'date' => 'date',
+    ];
 
     public function from()
     {
