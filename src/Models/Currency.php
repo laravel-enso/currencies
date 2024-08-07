@@ -15,8 +15,6 @@ class Currency extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = ['is_default' => 'boolean'];
-
     public function fromExchangeRates()
     {
         return $this->hasMany(ExchangeRate::class, 'from_id');
@@ -46,6 +44,13 @@ class Currency extends Model
     {
         static::creating(fn ($currency) => $currency->fillDefault());
         static::deleting(fn ($currency) => $currency->checkDefault());
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_default' => 'boolean',
+        ];
     }
 
     private function fillDefault()

@@ -13,10 +13,6 @@ class ExchangeRate extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = [
-        'date' => 'date',
-    ];
-
     public function from()
     {
         return $this->belongsTo(Currency::class, 'from_id');
@@ -25,5 +21,12 @@ class ExchangeRate extends Model
     public function to()
     {
         return $this->belongsTo(Currency::class, 'to_id');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'date' => 'date',
+        ];
     }
 }
