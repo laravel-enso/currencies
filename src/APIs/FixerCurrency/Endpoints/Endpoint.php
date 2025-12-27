@@ -30,6 +30,6 @@ abstract class Endpoint implements Contract
     public function body(): array
     {
         return $this->params() +
-            ['rapidapi-key' => Config::get('enso.currencies.fixerCurrencyApi.key')];
+            ['access_key' => Config::get('enso.currencies.fixerCurrencyApi.key')];
     }
 }
